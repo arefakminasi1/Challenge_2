@@ -1,0 +1,73 @@
+html {
+	box-sizing: border-box;
+}
+
+*, 
+*:before,
+*:after{
+	box-sizing: inherit;
+}
+body {
+    background-color: white;
+    transition-duration: 10s;
+}
+/* Ik heb hier een andere font geladen om vervolgens op alle tekst te gebruiken */
+@font-face {
+    font-family: "ComicSans";
+    src: url("../fonts/ComicSans.ttf");
+    }
+/* De animatie van de klok gebeurt elke 5 seconden en gaat van begin naar einde en van einde naar begin */
+#clock {
+    font-size: 40px;
+    animation: 5000ms breath infinite alternate ease-in-out;
+
+}
+/* Deze bron heeft mij hier gehlopen met de @keyframes*/
+/* @keyframes - CSS: Cascading Style Sheets | MDN. (2021, 15 maart). MDN. https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes */
+@keyframes breath {
+    0% {
+        font-size:40px;
+    }
+    100% {
+        font-size: 50px;
+    }
+}
+
+p {
+    font-family: 'ComicSans', Arial, sans-serif;
+    margin: 0;
+    color:white;
+    
+}
+
+div {
+    /*Binnen elke div zorgte ik ook voor het centraal zetten van elementen, ik heb hier de flex-box gebruikt*/
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    height: 300px;
+} 
+
+#date {
+    margin: 0 0 10px 0;
+}
+#greeting {
+    font-size: 30px;
+    transition-duration: 2s;
+}
+#greeting.hover {
+    font-size: 40px;
+    transition-duration: 2s;
+}
+#text {
+    font-size: 20px;
+    transition-duration: 2s;
+}
+#text.hover  {
+    font-size: 22px;
+    transition-duration: 2s;
+}
+

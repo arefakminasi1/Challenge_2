@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>ITS Clock</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="styles/grid-layout.css" rel="stylesheet"/>	
+        <link type="text/css" href="styles/main.css" rel="stylesheet"/>
+        <script type="text/javascript" src="JavaScript/js.js" defer></script>
+    </head>
+    <body id="body">
+        <!-- Hier heb ik de pagina in 3 sections verdeelt, section 1 is de fase van de dag, section 2 is de klok zelf, section 3 is de datum plus extra informatie-->
+        <!-- -->
+        <div class="greeting-section">
+            <p id="greeting"></p>
+        </div>
+        <!-- -->
+        <div id="clock_section" class="clock">
+            <p id="clock"></p>
+        </div>
+        <!-- -->
+         <div id="date_section" class="date">
+             <div id="text">
+                <p id="date" class="date_section"></p>
+                <p class="date_section">Time on Mars</p>
+                <p class="date_section" id="years"> </p>
+                <p class="date_section" id="days"> </p>
+                <p class="date_section" id="hours"> </p>
+                <p  class="date_section" id="minutes"> </p>
+                <p class="date_section" id="seconds"> </p>
+             </div>  
+        </div>
+    </body>
+</html>
