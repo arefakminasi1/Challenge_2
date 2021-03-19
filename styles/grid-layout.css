@@ -1,53 +1,96 @@
-body { 
-    /*Grid met mobile first design*/
+body {
     display: grid;
     grid-template-columns: 1fr;
-    /*De grid gap is hier 0px om de gebruiker niet teveel naar beneden te laten scrollen*/
-    grid-gap: 0px;
-    grid-template-areas:
+    grid-gap: 5px;
+    grid-template-areas: 
     "greeting"
     "clock"
-    "date";
-    
+    "date"
+    "timeonmars"
+    "years"
+    "month"
+    "days"
+    "hours"
+    "minutes"
+    ;
 }
 
-.greeting {
+.greeting-section {
     grid-area: greeting;
 }
 
-.clock {
+.clock-section {
     grid-area: clock;
 }
 
-.date {
+.date-section {
     grid-area: date;
+}
+
+.timeonmars-section {
+    grid-area:timeonmars;
+}
+
+.years-section {
+    grid-area: years;
+}
+
+.month-section {
+    grid-area: month;
+}
+
+.days-section {
+    grid-area: days;
+}
+
+.hours-section {
+    grid-area: hours;
+}
+
+.minutes-section {
+    grid-area: minutes;
 }
 
 
 @media only screen and (min-width: 601px){
-    body { 
+
+    body {
         display: grid;
         grid-template-columns: 1fr;
-        /* Wanneer het scherm iets groter wordt, komt hier meer grid-gap omdat er meer ruimte beschikbaar is*/
         grid-gap: 10px;
-        grid-template-areas:
+        /* Het einge verschil tussen de tablet en de telefoon is de grid-gap */
+        grid-template-areas: 
         "greeting"
         "clock"
-        "date";
+        "date"
+        "timeonmars"
+        "years"
+        "month"
+        "days"
+        "hours"
+        "minutes"
+        ;
     }
+
 }
 
+
 @media only screen and (min-width: 901px){
+
     body { 
         display: grid;
-        grid-template-columns: 1fr;
-        /* Wanneer het scherm iets groter wordt, komt hier meer grid-gap omdat er meer ruimte beschikbaar is*/
-        grid-gap: 25px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 20px;
         grid-template-areas:
-        "greeting"
-        "clock"
-        "date";
+        "greeting greeting greeting greeting greeting greeting"
+        "clock clock clock clock clock clock"
+        "date date date date date date"
+        "timeonmars timeonmars timeonmars timeonmars timeonmars timeonmars"
+        "years years month month days days"
+        "hours hours hours minutes minutes minutes"   
+        ;
     }
+
 }
 
 @media only screen and (min-width: 1200px){
@@ -56,14 +99,19 @@ body {
         margin: auto;
         /*Hier wordt aangegeven dat de body max-width mag krijgen om niet tot het oneindige te laten stretchen*/
       }
-      body { 
+
+    body { 
         display: grid;
-        grid-template-columns: 1fr;
-        /* Wanneer het scherm iets groter wordt, komt hier meer grid-gap omdat er meer ruimte beschikbaar is*/
-        grid-gap: 30px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 20px;
         grid-template-areas:
-        "greeting"
-        "clock"
-        "date";
+        "greeting greeting greeting greeting greeting"
+        "clock clock clock clock clock"
+        "date date date date date"
+        "timeonmars timeonmars timeonmars timeonmars timeonmars"
+        "years month days hours minutes"
+        
+        ;
     }
+
 }

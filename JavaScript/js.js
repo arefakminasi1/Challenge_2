@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
 
     var hours = 0;
     var minutes = 0;
@@ -6,15 +6,18 @@ window.onload = function () {
     var day = 0;
     var month = 0;
     var year = 0;
-    var arriveTime = new Date (2012, 7, 6); /* De datum van de landing van Curiosity */
     var bodyColor = document.getElementById('body');
+    var arriveTime = new Date (2012, 7, 6);
     var greeting = document.getElementById('greeting');
-    
-    function updateNumbers () {
+
+    /* Hier worden de datums en de tijd veranderd */
+    function getDateAndTime() {
         var clock = new Date();
+
         hours = clock.getHours();
         minutes = clock.getMinutes();
         seconds = clock.getSeconds();
+
         day = clock.getDate();
         month = (clock.getMonth()) + 1;
         year = clock.getFullYear();
@@ -28,35 +31,20 @@ window.onload = function () {
         if (seconds < 10){
             seconds = '0' + seconds;
         }
-        
     }
 
-    function updateClock () {
-    document.getElementById('clock').innerHTML = hours + ':' + minutes + ':' + seconds; 
+    /* Voor het zetten van de tijd in de HMTL */
+    function updateTime() {
+        document.getElementById('time').innerHTML = hours + ':' + minutes + ':' + seconds;
     }
-
+    /* Voor het zetten van de datum in de HTML */
     function updateDate() {
-    document.getElementById('date').innerHTML = day + ' / ' + month + ' / ' + year;
+        document.getElementById('date').innerHTML = day + ' / ' + month + ' / ' + year;
     }
 
-    /* Het veranderen van de tijd op mars met een berekening tussen het huidige moment en het moment van de landing van Curiosity */
-    /* Hier wordt elke seconde ernaar geluisterd */
+    /* Veranderen van de body achtergrond t.o.v de tijd */
+    function updateBackgroundColors() {
 
-    function timeOnMars () {
-        var timeOnMars = new Date();
-        var difference = timeOnMars.getTime() - arriveTime.getTime();
-        difference = difference/1000;
-        document.getElementById('seconds').innerHTML = 'Seconds   ' + (difference.toFixed()); /* Ik heb hier toFixed gebruikt om geen komma getallen te krijgen, wat onoverzichtelijk is */
-        document.getElementById('minutes').innerHTML = 'Minutes    ' + ((difference/60).toFixed());
-        document.getElementById('hours').innerHTML = 'Hours    ' + ((difference/60/60).toFixed());
-        document.getElementById('days').innerHTML = 'Days    ' + ((difference/60/60/24).toFixed());
-        document.getElementById('years').innerHTML = 'Years   ' + ((difference/60/60/24/365.25).toFixed());
-    }
-
-    /* Het veranderen van de achtergrondkleur t.o.v de hours*/
-    /* Hier wordt elke seconde ernaar geluisterd */
-
-    function changeBackgroundColor() {
         if (hours >= 0 && hours < 6 ) {
             bodyColor.style.backgroundColor = "#3F4362";
         }
@@ -69,10 +57,22 @@ window.onload = function () {
         if (hours >= 18 && hours < 24 ) {
             bodyColor.style.backgroundColor  = "#596D9B";
         }
+
     }
 
-    /* Het veranderen van de groet t.o.v de hours */
-    /* Hier wordt elke seconde ernaar geluisterd */
+    /* Veranderen van het verschil tussen het huidige moment en het landen */
+    function updateTimeOnMars() {
+        var timeNow = new Date();
+        var difference = timeNow.getTime() - arriveTime.getTime();
+        difference = difference/1000;
+        document.getElementById('minutes').innerHTML = 'Minutes   ' + ((difference/60).toFixed()); 
+        document.getElementById('hours').innerHTML = 'Hours   ' + ((difference/60/60).toFixed());
+        document.getElementById('days').innerHTML = 'Days   ' + ((difference/60/60/24).toFixed());
+        document.getElementById('month').innerHTML = 'Month   ' + ((difference/60/60/24/30).toFixed());
+        document.getElementById('years').innerHTML = 'Years   ' + ((difference/60/60/24/365.25).toFixed());
+    }
+
+    /* Veranderen van de groet t.o.v de tijd */
     function changeGreeting() {
         if (hours >= 0 && hours < 6 ) {
             greeting.innerHTML = 'Sleeping ZzZz...';
@@ -88,41 +88,27 @@ window.onload = function () {
         }
     }
 
+    getDateAndTime();
+    updateTime();
+    updateDate();
+    updateBackgroundColors();
+    updateTimeOnMars();
+    changeGreeting();
 
-updateNumbers();
-updateDate();
-updateClock();
-timeOnMars ();
-changeBackgroundColor();
-changeGreeting();
+    setInterval(getDateAndTime, 1000);
+    setInterval(updateTime, 1000);
+    setInterval(updateDate, 1000);
+    setInterval(updateBackgroundColors, 1000);
+    setInterval(updateTimeOnMars, 1000);
+    setInterval(changeGreeting, 1000);
 
-setInterval(updateNumbers, 1000);
-setInterval(updateClock, 1000); 
-setInterval(timeOnMars, 1000); 
-setInterval(changeBackgroundColor, 1000); 
-setInterval(changeGreeting, 1000); 
-setInterval(updateDate, 1000);
+    /* Bij hover de groet groter groter maken door het toevoegen van een class, wanneer de mouse weg is, wordt dat class ook verwijderd */
+    document.getElementById('greeting').onmouseover = function() {
+        document.getElementById('greeting').classList.add('hover');
+     };
+    
+     document.getElementById('greeting').onmouseout = function() {
+        document.getElementById('greeting').classList.remove('hover');
+     };
 
-/* Dit is de hover section voor de groet, de datum en de infromatie */
-/* Er wordt een class toegevoegd wanneer de mouse over het object gaat, en wanneer de mouse weg van dat object is, verliest het object dat class*/
-
- document.getElementById('greeting').onmouseover = function() {
-    document.getElementById('greeting').classList.add('hover');
- };
-
- document.getElementById('greeting').onmouseout = function() {
-    document.getElementById('greeting').classList.remove('hover');
- };
-
-
- document.getElementById('text').onmouseover = function() {
-    document.getElementById('text').classList.add('hover');
- };
-
- document.getElementById('text').onmouseout = function() {
-    document.getElementById('text').classList.remove('hover');
- };
- 
 };
-
-
