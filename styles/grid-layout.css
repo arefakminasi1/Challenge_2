@@ -87,6 +87,7 @@ body {
         "date date date date date date"
         "timeonmars timeonmars timeonmars timeonmars timeonmars timeonmars"
         "years years month month days days"
+        /* Hier komen de uren en de minuten naar beneden, omdat ze de grootste getallen zijn */
         "hours hours hours minutes minutes minutes"   
         ;
     }
